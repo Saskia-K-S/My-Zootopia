@@ -16,18 +16,25 @@ with open("animals_template.html", "r") as file:
     for animal in animals_data:
         # append information to each string
         output += '<li class="cards__item">'
+        output += f"<div class='card__title'>{animal['name']}</div>"
+        output += ' <p class="card__text">'
         if 'name' in animal:
-            output += f"Name: {animal['name']}<br/>\n"
+            output += f"<strong>Name</strong>: {animal['name']}<br/>\n"
         if 'diet' in animal['characteristics']:
-            output += f"Diet: {animal['characteristics']['diet']}<br/>\n"
+            output += f"<strong>Diet</strong>: {animal['characteristics']['diet']}<br/>\n"
         if 'locations' in animal:
-            output += f"Location: {animal['locations'][0]}<br/>\n"
+            output += f"<strong>Location</strong>: {animal['locations'][0]}<br/>\n"
         if 'type' in animal['characteristics']:
-            output += f"Type: {animal['characteristics']['type']}<br/>\n"
+            output += f"<strong>Type</strong>: {animal['characteristics']['type']}<br/>\n"
+        output += '</p>'
         output += '</li>'
         output += "\n"
     print(html_file)
     updated_html = html_file.replace("__REPLACE_ANIMALS_INFO__", output)
+
+
+
+
 
 
 with open("animals.html", "w") as animals_html:
